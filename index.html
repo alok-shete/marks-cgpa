@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Marks to GPA Converter</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css"
+    />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+  </head>
+  <body>
+    <div class="container">
+      <h2>Marks to GPA Converter</h2>
+      <form>
+        <div class="form-group">
+          <label for="usr">Marks:</label>
+          <input type="text" class="form-control" id="M" />
+        </div>
+        <div class="form-group">
+          <label for="pwd">Cradit point:</label>
+          <input type="text" class="form-control" id="C" />
+        </div>
+        <button type="button" class="btn btn-success" onclick="calGPA()">
+          Calculate GPA
+        </button>
+      </form>
+    </div>
+    <script type="text/javascript">
+      function calGPA() {
+        var total = 0;
+        var totalCradit = 0;
+        var marks = document.getElementById("M").value;
+        var cPoint = document.getElementById("C").value;
+        var marks = marks.split(" ").join("");
+        var marks = marks.split(",");
+        var cPoint = cPoint.split(" ").join("");
+        var cPoint = cPoint.split(",");
+        if (marks.length != cPoint.length) {
+          alert("Length Miss match");
+        } else {
+          for (var i = 0; i < marks.length; i++) {
+            var t = Number(marks[i]);
+            var ct = 0;
+            if (t >= 80 && t <= 100) {
+              ct = 10;
+            } else if (t >= 70 && t <= 79) {
+              ct = 9;
+            } else if (t >= 60 && t <= 69) {
+              ct = 8;
+            } else if (t >= 55 && t <= 59) {
+              ct = 7;
+            } else if (t >= 50 && t <= 54) {
+              ct = 6;
+            } else if (t >= 45 && t <= 49) {
+              ct = 5;
+            } else if (t >= 40 && t <= 44) {
+              ct = 4;
+            } else {
+              ct = 0;
+            }
+            total = total + ct * cPoint[i];
+
+            totalCradit = totalCradit + Number(cPoint[i]);
+          }
+          var GPA = total / totalCradit;
+          alert(GPA.toFixed(2));
+        }
+      }
+    </script>
+    <div class="container">
+      <h2>GPA To CGPA Converter</h2>
+      <form>
+        <div class="form-group">
+          <label for="usr">GPA(Per Tri):</label>
+          <input type="text" class="form-control" id="G" />
+        </div>
+        <div class="form-group">
+          <label for="pwd">Total Cradit Point(Per Tri):</label>
+          <input type="text" class="form-control" id="CG" />
+        </div>
+        <button type="button" class="btn btn-success" onclick="calCGPA()">
+          Calculate CGPA
+        </button>
+      </form>
+    </div>
+    <script type="text/javascript">
+      function calCGPA() {
+        var tGpa = 0;
+        var tCradit = 0;
+        var g = document.getElementById("G").value;
+        var cg = document.getElementById("CG").value;
+        var g = g.split(" ").join("");
+        var g = g.split(",");
+        var cg = cg.split(" ").join("");
+        var cg = cg.split(",");
+        if (g.length != cg.length) {
+          alert("Length Miss match");
+        } else {
+          for (var i = 0; i < g.length; i++) {
+            var ct = 0;
+
+            tGpa = tGpa + Number(g[i]) * Number(cg[i]);
+            tCradit = tCradit + Number(cg[i]);
+          }
+          var CGPA = tGpa / tCradit;
+          alert(CGPA.toFixed(2));
+        }
+      }
+    </script>
+  </body>
+</html>
