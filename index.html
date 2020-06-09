@@ -13,7 +13,7 @@
   </head>
   <body>
     <div class="container">
-      <h2>Marks to GPA Converter</h2>
+      <h2>GPA/CGPA Converter</h2>
       <form>
         <div class="form-group">
           <label for="usr">Marks:</label>
@@ -101,7 +101,6 @@
         } else {
           for (var i = 0; i < g.length; i++) {
             var ct = 0;
-
             tGpa = tGpa + Number(g[i]) * Number(cg[i]);
             tCradit = tCradit + Number(cg[i]);
           }
